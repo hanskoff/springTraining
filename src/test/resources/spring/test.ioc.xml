@@ -6,50 +6,5 @@
   <import resource="database.ioc.xml"/>
   <import resource="config.ioc.xml"/>
   <import resource="webmvc.ioc.xml"/>
-  <!--Metoda 1-->
-  <!--<bean class="eu.solidcraft.starter.ScoreCalculator">-->
-  <!--<constructor-arg type="eu.solidcraft.starter.FraudDetector" ref="PolishFraudDetector"></constructor-arg>-->
-  <!--<constructor-arg type="java.util.List">-->
-  <!--<list>-->
-  <!--<ref bean="JobsScoringRule"></ref>-->
-  <!--<ref bean="LoanHistoryScoringRule"></ref>-->
-  <!--<ref bean="AgeScoringRule"></ref>-->
-  <!--</list>-->
-  <!--</constructor-arg>-->
-  <!--</bean>-->
 
-  <!--Metoda 2-->
-  <!--<bean class="eu.solidcraft.starter.ScoreCalculator">-->
-  <!--<property name="fraudDetector" ref="PolishFraudDetector"/>-->
-  <!--<property name="rules">-->
-  <!--<list>-->
-  <!--<ref bean="JobsScoringRule"/>-->
-  <!--<ref bean="LoanHistoryScoringRule"/>-->
-  <!--<ref bean="AgeScoringRule"/>-->
-  <!--</list>-->
-  <!--</property>-->
-  <!--</bean>-->
-
-  <!--Metoda 3-->
-  <bean id="clientService"
-        class="eu.solidcraft.starter.ScoreCalculator"
-        factory-method="createInstance">
-    <constructor-arg type="eu.solidcraft.starter.FraudDetector" ref="PolishFraudDetector"></constructor-arg>
-    <constructor-arg type="java.util.List">
-      <list>
-        <ref bean="JobsScoringRule"></ref>
-        <ref bean="LoanHistoryScoringRule"></ref>
-        <ref bean="AgeScoringRule"></ref>
-      </list>
-    </constructor-arg>
-  </bean>
-  <!--Metoda 4-->
-  <bean id="ScoringRule" abstract="true">
-    <property name="maxScore" value="100"/>
-  </bean>
-
-  <bean id="PolishFraudDetector" class="eu.solidcraft.starter.PolishFraudDetector"></bean>
-  <bean id="JobsScoringRule" class="eu.solidcraft.starter.JobsScoringRule" parent="ScoringRule"></bean>
-  <bean id="AgeScoringRule" class="eu.solidcraft.starter.AgeScoringRule" parent="ScoringRule"></bean>
-  <bean id="LoanHistoryScoringRule" class="eu.solidcraft.starter.LoansHistoryScoringRule" parent="ScoringRule"></bean>
 </beans>
