@@ -1,9 +1,10 @@
 package eu.solidcraft.starter
 
-import org.springframework.stereotype.Component
-
-@Component
 class AgeScoringRule implements ScoringRule {
+  AgeScoringRule() {
+    print("I am initialized only once")
+  }
+
   int maxScore
 
   void setMaxScore(int maxScore) {

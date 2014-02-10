@@ -1,10 +1,5 @@
 package eu.solidcraft.starter
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.stereotype.Component
-
-@Component
 class ScoreCalculator {
 
   private FraudDetector fraudDetector
@@ -14,8 +9,7 @@ class ScoreCalculator {
   ScoreCalculator() {
   }
 
-  @Autowired
-  ScoreCalculator(@Qualifier("polishFraud") FraudDetector fraudDetector, List<ScoringRule> rules) {
+  ScoreCalculator(FraudDetector fraudDetector, List<ScoringRule> rules) {
     this.fraudDetector = fraudDetector
     this.rules = rules
   }
