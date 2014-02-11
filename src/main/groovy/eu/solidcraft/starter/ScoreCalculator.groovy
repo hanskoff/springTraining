@@ -25,4 +25,8 @@ class ScoreCalculator {
   static ScoreCalculator createInstance(FraudDetector fraudDetector, List<ScoringRule> rules) {
     new ScoreCalculator(fraudDetector, rules)
   }
+
+  Integer getScoring(){
+    rules.sum { it -> it.getScore()}
+  }
 }

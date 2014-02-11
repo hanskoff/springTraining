@@ -10,24 +10,31 @@ class ScoreCalculatorSpec extends IntegrationSpec {
   @Qualifier("polish")
   ScoreCalculator scoreCalculator
 
-  @Autowired
-  @Qualifier("english")
-  ScoreCalculator scoreCalculatorEng
+//  @Autowired
+//  @Qualifier("english")
+//  ScoreCalculator scoreCalculatorEng
 
   def "score calculator should be injected"() {
     expect:
     scoreCalculator != null
   }
 
-  @Autowired
-  RememberRule rememberRule
 
-  def "should increase score"() {
-    when:
-    rememberRule.increaseScore()
-    then:
-    rememberRule.mapSize() ==1
+  def "should sum all scoring"() {
+    expect:
+    scoreCalculator.getScoring() == 100
   }
+
+
+//  @Autowired
+//  RememberRule rememberRule
+//
+//  def "should increase score"() {
+//    when:
+//    rememberRule.increaseScore()
+//    then:
+//    rememberRule.mapSize() ==1
+//  }
 
 
 }
